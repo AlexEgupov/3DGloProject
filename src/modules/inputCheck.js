@@ -11,7 +11,7 @@ const inputCheck = () => {
 
     const emailInputs = document.querySelectorAll('.form-email');
 
-    const phoneInput = document.querySelectorAll('.form-phone');
+    const phoneInputs = document.querySelectorAll('.form-phone');
 
     const numberCheck = (input) => {
         input.addEventListener('input', (e) => {
@@ -52,7 +52,7 @@ const inputCheck = () => {
 
     mailCheck(emailInputs);
 
-    phoneCheck(phoneInput);
+    phoneCheck(phoneInputs);
 };
 
 export default inputCheck;
