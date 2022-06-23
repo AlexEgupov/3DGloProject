@@ -15,16 +15,18 @@ const timer = (deadline) => {
         return { timeRemaining, hours, minutes, seconds };
     };
 
+    function zeroPlus(item) {
+        let num = item < 10 ? '0' + item : item;
+        return num;
+    }
+
     const updateClock = () => {
         let getTime = getTimeRemaining();
-        let zeroHours = getTime.hours < 10 ? '0' + getTime.hours : getTime.hours;
-        let zeroMinutes = getTime.minutes < 10 ? '0' + getTime.minutes : getTime.minutes;
-        let zeroSeconds = getTime.seconds < 10 ? '0' + getTime.seconds : getTime.seconds;
 
         if (getTime.timeRemaining > 0) {
-            timerHours.textContent = zeroHours;
-            timerMinutes.textContent = zeroMinutes;
-            timerSeconds.textContent = zeroSeconds;
+            timerHours.textContent = zeroPlus(getTime.hours);
+            timerMinutes.textContent = zeroPlus(getTime.minutes);
+            timerSeconds.textContent = zeroPlus(getTime.seconds);
         } else {
             timerHours.textContent = '00';
             timerMinutes.textContent = '00';
