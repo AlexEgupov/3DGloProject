@@ -39,11 +39,11 @@ const printTime = () => {
     let leftWord = numWord(daysUntilNewYear, ['остался', 'осталось', 'осталось']);
 
     if (hours > 23 || hours < 7) {
-        div.textContent = `Доброй ночи Сегодня: ${days} Текущее время: ${USTime}\n До нового года ${leftWord} ${daysUntilNewYear} ${daysWord}`;
+        div.textContent = `Доброй ночи Сегодня: ${days} Текущее время: ${USTime} До нового года ${leftWord} ${daysUntilNewYear} ${daysWord}`;
     } else if (hours > 6 && hours < 12) {
-        div.textContent = `Доброе утро Сегодня: ${days} Текущее время: ${USTime}\n До нового года ${leftWord} ${daysUntilNewYear} ${daysWord}`;
+        div.textContent = `Доброе утро Сегодня: ${days} Текущее время: ${USTime} До нового года ${leftWord} ${daysUntilNewYear} ${daysWord}`;
     } else if (hours > 11 && hours < 19) {
-        div.textContent = `Добрый день Сегодня: ${days} Текущее время: ${USTime}\n До нового года ${leftWord} ${daysUntilNewYear} ${daysWord}`;
+        div.textContent = `Добрый день Сегодня: ${days} Текущее время: ${USTime} До нового года ${leftWord} ${daysUntilNewYear} ${daysWord}`;
     } else if (hours > 18 && hours < 24) {
         div.textContent = `Добрый вечер Сегодня: ${days} Текущее время: ${USTime} До нового года ${leftWord} ${daysUntilNewYear} ${daysWord}`;
     }
