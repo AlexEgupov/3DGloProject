@@ -33,6 +33,23 @@ const calc = (price) => {
 
         total.textContent = totalValue;
 
+        const changeTotal = () => {
+            let result = 0;
+            let step = 25;
+            let time = 2000;
+
+            let change = time / (totalValue / step);
+            let interval = setInterval(() => {
+                if (result === totalValue) {
+                    clearInterval(interval);
+                } else {
+                    result += +step;
+                }
+                total.textContent = result;
+            }, change);
+        };
+
+        changeTotal();
     };
 
     clacBlock.addEventListener('input', (e) => {
