@@ -28,8 +28,9 @@ const inputCheck = () => {
             word = word.replace(/\-+/g, '-');
 
             e.target.value = word;
-            let upWord = word[0].toUpperCase() + word.slice(1);
-            e.target.value = upWord;
+            if (word != '') {
+                e.target.value = word[0].toUpperCase() + word.slice(1);
+            }
         });
 
 
@@ -38,7 +39,7 @@ const inputCheck = () => {
     const mailCheck = (input) => {
         input.forEach((e) => {
             e.addEventListener('blur', () => {
-                let word = e.value.replace(/[^a-z\@\-\_\.\!\~\*\']/i, '');
+                let word = e.value.replace(/[^a-z\@\-\_\.\!\~\*\'\d]/i, '');
                 word = word.replace(/^\-+|\-+$/g, '');
                 word = word.replace(/\-+/g, '-');
 
@@ -50,7 +51,7 @@ const inputCheck = () => {
     const phoneCheck = (input) => {
         input.forEach((e) => {
             e.addEventListener('blur', () => {
-                let word = e.value.replace(/[^0-9\-\(\)]/gi, '');
+                let word = e.value.replace(/[^0-9\-\(\)\+]/gi, '');
                 word = word.replace(/^\-+|\-+$/g, '');
                 word = word.replace(/\-+/g, '-');
 
