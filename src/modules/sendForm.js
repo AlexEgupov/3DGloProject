@@ -44,7 +44,7 @@ const sendForm = ({ formId, someElem = [] }) => {
         statusBlock.style.cssText = `width: 50px; height: 50px; margin: auto;
         background-color: white;
         animation:  infinite ease-in-out;`;
-        statusBlock.animate([
+        let animation = statusBlock.animate([
 
             { transform: 'perspective(120px) rotateX(0deg) rotateY(0deg)' },
             { transform: 'perspective(120px) rotateX(-180.1deg) rotateY(0deg)' },
@@ -52,7 +52,7 @@ const sendForm = ({ formId, someElem = [] }) => {
 
         ], {
             duration: 1000,
-            iterations: 1
+            iterations: Infinity
         });
         form.append(statusBlock);
 
@@ -73,6 +73,7 @@ const sendForm = ({ formId, someElem = [] }) => {
         if (validate(formElements)) {
             sendData(formBody)
                 .then(data => {
+                    animation.cancel();
                     statusBlock.style.cssText = `color: white`;
                     statusBlock.textContent = successText;
 
@@ -85,6 +86,7 @@ const sendForm = ({ formId, someElem = [] }) => {
                     });
                 })
                 .catch(error => {
+                    animation.cancel();
                     statusBlock.style.cssText = `color: white`;
                     statusBlock.textContent = errorText;
 
