@@ -18,7 +18,7 @@ const sendForm = ({ formId, someElem = [] }) => {
                 nameCheck.test(input.value) ? success = true : success = false;
             } else if (input.name == 'user_phone') {
                 let numCheck = /[0-9\-\(\)\+]/gi;
-                numCheck.test(input.value) ? success = true : success = false;
+                numCheck.test(input.value) && input.value.length >= 11 ? success = true : success = false;
             } else if (input.name == 'user_message') {
                 let nameCheck = /[а-яё\s\d\!\?\.\,]+/gi;
                 nameCheck.test(input.value) ? success = true : success = false;
@@ -60,12 +60,14 @@ const sendForm = ({ formId, someElem = [] }) => {
             }
         });
 
-        console.log('submit');
-
         if (validate(formElements)) {
             sendData(formBody)
                 .then(data => {
                     statusBlock.textContent = successText;
+
+                    setTimeout(() => {
+                        statusBlock.textContent = '';
+                    }, 3000);
 
                     formElements.forEach(input => {
                         input.value = '';
@@ -73,6 +75,10 @@ const sendForm = ({ formId, someElem = [] }) => {
                 })
                 .catch(error => {
                     statusBlock.textContent = errorText;
+
+                    setTimeout(() => {
+                        statusBlock.textContent = '';
+                    }, 3000);
                 });
 
         } else {

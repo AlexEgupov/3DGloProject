@@ -60,6 +60,12 @@ const inputCheck = () => {
         });
     };
 
+    const emailRequired = (emails) => {
+        emails.forEach((e) => {
+            e.setAttribute("required", "");
+        });
+    };
+
     numberCheck(calcSquare);
     numberCheck(calcCount);
     numberCheck(calcDay);
@@ -69,6 +75,7 @@ const inputCheck = () => {
     textCheck(footerInput);
     textCheck(messageInput);
 
+    emailRequired(emailInputs);
     mailCheck(emailInputs);
 
     phoneCheck(phoneInputs);
