@@ -1,8 +1,6 @@
 const sendForm = ({ formId, someElem = [] }) => {
     const form = document.getElementById(formId);
     const statusBlock = document.createElement('div');
-    statusBlock.style.color = "white";
-    const loadText = 'Загрузка...';
     const errorText = 'Ошибка...';
     const successText = 'Спасибо! Наш менеджер с вами свяжется!';
 
@@ -43,7 +41,19 @@ const sendForm = ({ formId, someElem = [] }) => {
         const formData = new FormData(form);
         const formBody = {};
 
-        statusBlock.textContent = loadText;
+        statusBlock.style.cssText = `width: 50px; height: 50px; margin: auto;
+        background-color: white;
+        animation:  infinite ease-in-out;`;
+        statusBlock.animate([
+
+            { transform: 'perspective(120px) rotateX(0deg) rotateY(0deg)' },
+            { transform: 'perspective(120px) rotateX(-180.1deg) rotateY(0deg)' },
+            { transform: 'perspective(120px) rotateX(-180deg) rotateY(-179.9deg)' }
+
+        ], {
+            duration: 1000,
+            iterations: 1
+        });
         form.append(statusBlock);
 
         formData.forEach((val, key) => {
@@ -63,6 +73,7 @@ const sendForm = ({ formId, someElem = [] }) => {
         if (validate(formElements)) {
             sendData(formBody)
                 .then(data => {
+                    statusBlock.style.cssText = `color: white`;
                     statusBlock.textContent = successText;
 
                     setTimeout(() => {
@@ -74,6 +85,7 @@ const sendForm = ({ formId, someElem = [] }) => {
                     });
                 })
                 .catch(error => {
+                    statusBlock.style.cssText = `color: white`;
                     statusBlock.textContent = errorText;
 
                     setTimeout(() => {
@@ -82,6 +94,7 @@ const sendForm = ({ formId, someElem = [] }) => {
                 });
 
         } else {
+            statusBlock.style.cssText = '';
             alert('Данные не валидны!!!');
         }
     };
