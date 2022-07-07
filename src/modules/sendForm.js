@@ -4,6 +4,8 @@ const sendForm = ({ formId, someElem = [] }) => {
     const errorText = 'Ошибка...';
     const successText = 'Спасибо! Наш менеджер с вами свяжется!';
 
+    let errorMesage;
+
     const validate = (list) => {
         let success = true;
 
@@ -17,6 +19,7 @@ const sendForm = ({ formId, someElem = [] }) => {
             } else if (input.name == 'user_phone') {
                 let numCheck = /[0-9\-\(\)\+]/gi;
                 numCheck.test(input.value) && input.value.length >= 11 ? success = true : success = false;
+                errorMesage = 'Номер телефона неверен: введено меньше 11 цифр';
             } else if (input.name == 'user_message') {
                 let nameCheck = /[а-яё\s\d\!\?\.\,]+/gi;
                 nameCheck.test(input.value) ? success = true : success = false;
@@ -97,7 +100,7 @@ const sendForm = ({ formId, someElem = [] }) => {
 
         } else {
             statusBlock.style.cssText = '';
-            alert('Данные не валидны!!!');
+            alert(errorMesage);
         }
     };
 

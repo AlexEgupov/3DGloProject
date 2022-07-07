@@ -15,7 +15,8 @@ const modal = () => {
                         return timeFraction;
                     },
                     draw(progress) {
-                        modalWindow.style.left = (43 * progress) + "%";
+                        modalWindow.style.left = (50 * progress) + "%";
+                        modalWindow.style.transform = `translate(-50%)`;
                     }
                 });
             } else {

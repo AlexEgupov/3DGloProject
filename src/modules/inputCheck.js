@@ -29,7 +29,7 @@ const inputCheck = () => {
 
             e.target.value = word;
             if (word != '') {
-                e.target.value = word[0].toUpperCase() + word.slice(1);
+                e.target.value = input.value = input.value.replace(/( |^)[а-яёa-z]/g, (w) => { return w.toUpperCase(); });
             }
         });
 
